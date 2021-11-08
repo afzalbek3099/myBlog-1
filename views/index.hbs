@@ -1,0 +1,37 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+
+<form action="/" method="POST">
+  <div class="card-body">
+    <div class="form-group">
+      <label for="categoryName">Malomot sarlavha</label>
+      <input
+        type="text"
+        class="form-control"
+        name="subject"
+      />
+    </div>
+    <div class="form-group">
+      <label for="sortNumber">Malomot</label>
+      <input
+        type="taxt"
+        class="form-control"
+        name="text"
+      />
+    </div>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-primary" type="submit">O`zgartirish</button>
+  </div>
+</form>
+
+
+{{#if texts.length}}
+{{#each texts}}
+<h4>{{subject}}</h4>
+<h5>{{text}}</h5>
+{{/each}}
+{{else}}
+<p>empty</p>
+{{/if}}
+
