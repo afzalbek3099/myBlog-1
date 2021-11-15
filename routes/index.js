@@ -4,7 +4,6 @@ const Maqola = require("../models/Maqola");
 
 /* GET home page. */
 router.get("/", async function (req, res, next) {
-
   const maqola = await Maqola.find()
   res.render("index", { layout: "layout", maqola });
 });
@@ -12,9 +11,7 @@ router.get("/", async function (req, res, next) {
 
 
 
-
   res.render("index", { layout: "layout" });
 });
-
 
 module.exports = router;
