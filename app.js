@@ -14,6 +14,8 @@ const categoryRouter = require("./routes/category");
 const maqolaRouter = require("./routes/maqola");
 const authRouter = require("./routes/auth");
 const virables = require('./middleware/virables')
+const adminRouter = require("./routes/admin");
+const categoryRouter = require("./routes/category");
 
 const app = express();
 
@@ -61,11 +63,16 @@ app.use('/admin:any', express.static(path.join(__dirname, 'public')))
 app.use(virables)
 
 app.use("/", indexRouter);
+
 app.use("/maqolaView", maqolaViewRouter);
 app.use("/admin", adminRouter);
 app.use("/admin/category", categoryRouter);
 app.use("/admin/maqola", maqolaRouter);
 app.use("/auth", authRouter);
+
+app.use("/admin", adminRouter);
+app.use("/admin/category", categoryRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

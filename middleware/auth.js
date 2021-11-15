@@ -4,3 +4,8 @@ module.exports = (req, res, next) => {
     }
     next()
 }
+  if (!req.session.isAuth) {
+    res.redirect("/auth/login");
+  }
+  next();
+};

@@ -66,6 +66,15 @@ body {
 
 .img:hover {
   opacity: .5 !important;
+a {
+  color: #00b7ff;
+}
+
+.card-title {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .malumot {

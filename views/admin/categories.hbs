@@ -1,5 +1,6 @@
 <div class="d-flex">
   {{#if categories.length}}
+
   {{#each categories}}
   <div class="col-lg-2">
     <div class="card text-center" style="height: 200px; padding: 35px">
@@ -16,5 +17,28 @@
     </div>
   </div>
   {{/each}}
+
+    {{#each categories}}
+      <div class="col-lg-2">
+        <div class="card text-center" style="height: 200px; padding: 35px">
+          <div class="card-title">
+            <div class="box">
+              <h4>{{categoryTitle}}</h4>
+            </div>
+            <div class="box">
+              <a
+                href="/admin/category/delete/{{id}}"
+                class="btn btn-danger"
+              >O'chirish</a>
+              <a
+                href="/admin/category/edit/{{id}}"
+                class="btn btn-warning"
+              >O'zgartirish</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+
   {{/if}}
 </div>

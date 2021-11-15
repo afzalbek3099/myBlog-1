@@ -7,6 +7,10 @@ const filePath = path.join(require.main.filename)
 module.exports = async (fileName) => {
     if (fileName) {
         await fs.unlink(filePath + '/../../public/images/' + fileName, (err) => {
+
+module.exports = async (fileName) => {
+    if (fileName) {
+        await fs.unlink(filePath + '../../../public/images/' + fileName, (err) => {
             if (err) {
                 console.log(err);
             }

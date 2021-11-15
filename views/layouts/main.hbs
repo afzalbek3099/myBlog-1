@@ -2,6 +2,7 @@
 <html lang="en">
 {{> head}}
 
+
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
     <div class="wrapper">
@@ -20,6 +21,25 @@
     </div>
 
     {{>script}}
+
+<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+
+<div class="wrapper">
+    {{>preloader}}
+    {{>aside}}
+    <div class="content-wrapper">
+    {{>header}}
+    <div class="content">
+    {{{body}}}
+
+    </div>
+    </div>
+    
+    {{>footer}}
+</div>
+
+{{>script}}
+
 </body>
 
 </html>

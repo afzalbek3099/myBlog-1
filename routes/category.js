@@ -1,3 +1,4 @@
+
 const { Router } = require('express')
 const router = Router()
 const Maqola = require('../models/Maqola')
@@ -58,6 +59,11 @@ router.get('/read/:id', auth, async (req, res) => {
 })
 
 router.get("/read", auth, async (req, res) => {
+const { Router } = require("express");
+const router = Router();
+const Category = require("../models/Category");
+
+router.get("/read", async (req, res) => {
   const categories = await Category.find();
   res.render("admin/categories", {
     title: "Kategoriyalarni korish",
@@ -66,21 +72,34 @@ router.get("/read", auth, async (req, res) => {
     categories,
   });
 });
+
 router.get("/add", auth, (req, res) => {
+
+router.get("/add", (req, res) => {
+
   res.render("admin/categoryCreate", {
     title: "Kategoriyalarni yaratish",
     layout: "main",
     header: "Kategoriyalarni yaratish",
   });
 });
+
 router.post("/add", auth, async (req, res) => {
+
+
+router.post("/add", async (req, res) => {
+
   const { categoryTitle } = req.body;
   console.log(categoryTitle);
   const category = new Category({ categoryTitle });
   await category.save();
   res.redirect("/admin/category/read");
 });
+
 router.get("/edit/:id", auth, async (req, res) => {
+
+
+router.get("/edit/:id", async (req, res) => {
   const category = await Category.findById(req.params.id);
   res.render("admin/categoryEdit", {
     header: "Kategoriyalarni yangilash",
@@ -99,5 +118,17 @@ router.get('/delete/:id', auth, async (req, res) => {
   res.redirect('/admin/category/read')
 
 })
+
+router.post("/edit/:id", async (req, res) => {
+  console.log(req.body);
+  console.log(req.params);
+  await Category.findByIdAndUpdate(req.body, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/admin/category/read");
+    }
+  });
+});
 
 module.exports = router;
