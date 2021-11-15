@@ -1,2 +1,22 @@
-<h1>Hello I'm client page</h1>
-
+<div class="col-8">
+    {{#if maqola.length}}
+    {{#each maqola}}
+    <div class="titleBox d-flex">
+        <div class="col-3" style="margin-right: 50px !important;">
+            <a href="/maqolaView/{{id}}"><img src="images/{{img}}" alt="" class="img" width="100%"></a>
+        </div>
+        <div class="col-4" style="margin-right: 30px !important;">
+            <div>
+                <a href="/maqolaView/{{id}}" class="malumot a">{{maqolaTitle}} </a>
+                <a href="/maqolaView/{{id}}">
+                    <h2 class="internet">{{maqolaTitle}}</h2>
+                </a>
+            </div>
+            <div class="posted-on">
+                <p>{{maqolaText}}</p>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+    {{/if}}
+</div>

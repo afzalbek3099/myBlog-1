@@ -1,16 +1,199 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", sans-serif !important;
+  font-family: "Raleway", sans-serif !important;
 }
 
-a {
-  color: #00b7ff;
+.navbar-collapse {
+  flex-grow: inherit !important;
 }
 
-.card-title {
-  height: 100%;
+.navbar-brand {
+  display: flex !important;
+  flex-direction: column !important;
+  margin: 0px !important;
+  line-height: 1 !important;
+  font-family: "Raleway", Helvetica, Arial, sans-serif !important;
+  font-size: 23px !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  color: #000000 !important;
+  vertical-align: middle !important;
+  font-weight: 600 !important;
+  margin-top: 10px !important;
+}
+
+.navbar_brand_text {
+  font-size: 12px !important;
+  line-height: 14px !important;
+  margin-bottom: 0 !important;
+  color: #000000 !important;
+}
+
+.navbar {
+  padding-top: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  box-shadow: 0 5px 10px 0 rgb(50 50 50 / 6%) !important;
+}
+
+.alar {
+  color: #333333 !important;
+  font-family: "Raleway", Helvetica, Arial, sans-serif !important;
+  padding-left: 17px !important;
+  padding-right: 17px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  zoom: 1 !important;
+  letter-spacing: 1px !important;
+}
+
+.lilar {
+  margin: 20px !important;
+}
+
+.img {
+  transition: .3s !important;
+}
+
+.img:hover {
+  opacity: .5 !important;
+}
+
+.malumot {
+  color: #03c4eb !important;
+  font-size: 10px !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.2px !important;
+}
+
+.alar {
+  color: #333333 !important;
+}
+
+.alar:hover {
+  color: #03c4eb !important;
+  text-decoration: underline !important;
+}
+
+
+.dataTime {
+  color: #03c4eb !important;
+}
+
+.internet {
+  font-size: 22px !important;
+  line-height: 1.5 !important;
+  margin-bottom: 7px !important;
+  color: #000 !important;
+}
+
+.internet:hover {
+  color: #777777 !important;
+  text-decoration: none !important;
+}
+
+.posted-on {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif !important;
+  line-height: 1.7 !important;
+}
+
+.data {
+  margin-bottom: 25px !important;
+}
+
+/* .before::before {
+  content: "";
+  display: inline-block !important;
+  width: 1px !important;
+  height: 100% !important;
+  background-color: #777777 !important;
+} */
+
+.maqolalarTitle {
+  font-size: 15px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  margin-bottom: 13px !important;
+  font-weight: 700 !important;
+}
+
+.margin {
+  margin: 30px !important;
+}
+
+.server {
+  color: #777777 !important;
+  font-size: 14px !important;
+}
+
+
+.server:hover {
+  color: #03c4eb !important;
+  text-decoration: underline !important;
+}
+
+.server1 {
+  color: #777777 !important;
+  font-size: 14px !important;
+  display: block !important;
+  width: 240px !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.server1:hover {
+  color: #03c4eb !important;
+  text-decoration: underline !important;
+}
+
+.php {
+  color: #777777 !important;
+  font-size: 14px !important;
+  margin-top: 10px !important;
+}
+
+.php:hover {
+  color: #03c4eb !important;
+  text-decoration: underline !important;
+}
+
+.teoreya {
+  color: #777777 !important;
+  font-size: 14px !important;
+  margin-top: 10px !important;
+}
+
+.myBlogHr {
+  width: 240px !important;
+  margin-left: 30px !important;
+}
+
+.login-box {
+  margin: 10% auto;
+}
+
+.register-box {
+  margin: 10% auto;
+}
+
+.titleBox {
+  margin-top: 20px;
+}
+
+
+.before {
   display: flex;
-  justify-content: space-between;
+  max-width: inherit !important;
+  display: flex;
   flex-direction: column;
 }
-

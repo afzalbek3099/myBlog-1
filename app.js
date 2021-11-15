@@ -4,11 +4,16 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const exhbs = require("express-handlebars");
+const session = require('express-session');
+const MongoStore = require('connect-mongodb-session')(session);
 
 const indexRouter = require("./routes/index");
+const maqolaViewRouter = require("./routes/maqolaView");
 const adminRouter = require("./routes/admin");
 const categoryRouter = require("./routes/category");
 const maqolaRouter = require("./routes/maqola");
+const authRouter = require("./routes/auth");
+const virables = require('./middleware/virables')
 
 const app = express();
 
@@ -29,6 +34,11 @@ app.engine(
   })
 );
 
+const store = new MongoStore({
+  uri: 'mongodb+srv://myBlog:Z1aGdtJAuZyA95SF@myblog.iguvv.mongodb.net/myBlog',
+  collection: 'session'
+})
+
 require("./helper/db")();
 
 app.use(logger("dev"));
@@ -37,10 +47,25 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(session({
+  resave: false,
+  secret: 'some_secret_key',
+  saveUninitialized: false,
+  store
+}))
+
+
+app.use('/admin', express.static(path.join(__dirname, 'public')))
+app.use('/admin:any', express.static(path.join(__dirname, 'public')))
+
+app.use(virables)
+
 app.use("/", indexRouter);
+app.use("/maqolaView", maqolaViewRouter);
 app.use("/admin", adminRouter);
 app.use("/admin/category", categoryRouter);
 app.use("/admin/maqola", maqolaRouter);
+app.use("/auth", authRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

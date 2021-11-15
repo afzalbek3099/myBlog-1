@@ -1,10 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const Text = require("../models/Text");
+const Maqola = require("../models/Maqola");
 
 /* GET home page. */
 router.get("/", async function (req, res, next) {
-  res.render("index", { layout: "layout" });
+  const maqola = await Maqola.find()
+  res.render("index", { layout: "layout", maqola });
 });
+
+
+
+
 
 module.exports = router;

@@ -4,10 +4,11 @@ const Maqola = require('../models/Maqola')
 const fileUpload = require('../middleware/fileUpload')
 const toDelete = require('../middleware/toDelete')
 const Category = require('../models/Category')
+const auth = require('../middleware/auth')
 
 
 
-router.get('/add', async (req, res) => {
+router.get('/add', auth, async (req, res) => {
     // const maqola = await Maqola.find()
     const categories = await Category.find()
 
@@ -20,7 +21,16 @@ router.get('/add', async (req, res) => {
     })
 })
 
-router.post('/add', fileUpload.single('img'), async (req, res) => {
+router.get('/read', auth, async (req, res) => {
+    const maqola = await Maqola.find()
+    res.render('admin/maqola', {
+        title: 'Maqola ',
+        layout: 'main',
+        header: 'Maqolani korish',
+        maqola
+    })
+})
+router.post('/add', auth, fileUpload.single('img'), async (req, res) => {
     const { maqolaTitle, maqolaText, categoryId } = req.body
     const img = req.file.filename
     console.log(img);
@@ -36,17 +46,7 @@ router.post('/add', fileUpload.single('img'), async (req, res) => {
     res.redirect('/admin/maqola/read')
 })
 
-router.get('/read', async (req, res) => {
-    const maqola = await Maqola.find()
-    res.render('admin/maqola', {
-        title: 'Maqola ',
-        layout: 'main',
-        header: 'Maqolani korish',
-        maqola
-    })
-})
-
-router.get('/edit/:id', async (req, res) => {
+router.get('/edit/:id', auth, async (req, res) => {
     const maqola = await Maqola.findById(req.params.id)
 
     res.render('admin/maqolaEdit', {
@@ -57,7 +57,7 @@ router.get('/edit/:id', async (req, res) => {
     })
 })
 
-router.post('/edit/:id', fileUpload.single('img'), async (req, res) => {
+router.post('/edit/:id', auth, fileUpload.single('img'), async (req, res) => {
     const { img } = await Maqola.findById(req.params.id)
     const maqola = req.body
 
@@ -67,14 +67,14 @@ router.post('/edit/:id', fileUpload.single('img'), async (req, res) => {
         toDelete(img)
         maqola.img = req.file.filename
     }
-    await Maqola.findByIdAndUpdate(req.params.id, maqola, )
+    await Maqola.findByIdAndUpdate(req.params.id, maqola,)
     res.redirect('/admin/maqola/read')
 
 })
 
-router.get('/delete/:id', async (req, res) => {
+router.get('/delete/:id', auth, async (req, res) => {
     const { img } = await Maqola.findById(req.params.id)
-    await Maqola.findByIdAndDelete(req.params.id, req.body, )
+    await Maqola.findByIdAndDelete(req.params.id, req.body,)
     toDelete(img)
     res.redirect('/admin/maqola/read')
 })
